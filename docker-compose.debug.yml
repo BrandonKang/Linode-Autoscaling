@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  linodeautoscale:
+    image: linodeautoscale
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 9999:9999
+      - 9229:9229
+    command: ["node", "--inspect=0.0.0.0:9229", "index.js"]
+    environment:
+      NODE_ENV: development
+      SERVICE_CODE: autoscale
+      LINODE_PERSONAL_ACCESS_TOKEN: REDACTED - Add your Access Token here]
+      STATUS_CHECKING_TIME_INTERVAL: "*/5 * * * *"
+      LINODE_API_BASE_URL:  https://api.linode.com/v4/
+      LINODE_BALANCER_AUTOSCALE_ID:  [REDACTED - Add your NodeBalancer ID here]
+      SCALE_UP_CPU_PERCENTAGE:  75
+      SCALE_DOWN_CPU_PERCENTAGE:  50

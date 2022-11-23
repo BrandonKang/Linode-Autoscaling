@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  autoscale:
+    image: [REDACTED - It's only for your Docker registry domain URL]
+    container_name: autoscale-container
+    restart: unless-stopped
+    ports:
+      - 9999:9999
+    environment:
+      NODE_ENV: development
+      SERVER_PORT: 9999
+      SERVICE_CODE: autoscale
+      LINODE_PERSONAL_ACCESS_TOKEN: [REDACTED - Add your Access Token here]
+      STATUS_CHECKING_TIME_INTERVAL: 5 * * * * *
+      LINODE_API_BASE_URL:  https://api.linode.com/v4/
+      LINODE_BALANCER_AUTOSCALE_ID:  [REDACTED - Add your NodeBalancer ID here]
+      SCALE_UP_CPU_PERCENTAGE:  75
+      SCALE_DOWN_CPU_PERCENTAGE:  50
