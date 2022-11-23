@@ -1,3 +1,6 @@
+Implementing an Autoscaling control service in Linode using NodeBalancer,
+An L7 supported load balancer, Linode Image and Linode APIs for managing nodes(VMs) and getting instance statistics such as CPU usage.
+
 ## Directory Structure
 ```bash
 ```bash
